@@ -1,5 +1,5 @@
-require "pry"
 class Artist
+
     attr_accessor :name
 
     def initialize(name)
@@ -10,16 +10,16 @@ class Artist
         Song.all.select {|song| song.artist == self}
     end
 
-    def add_song(song)
-        song.artist = self
+    def add_song(song_object)
+        song_object.artist = self
     end
 
-    def add_song_by_name(song)
-        new_song = Song.new(song)
-        add_song(new_song)
+    def add_song_by_name(song_title)
+        new_song = Song.new(song_title)
+        new_song.artist = self
     end
 
     def self.song_count
-        Song.all.length
+        Song.all.uniq.length
     end
 end

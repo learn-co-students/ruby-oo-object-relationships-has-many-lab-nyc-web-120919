@@ -1,6 +1,6 @@
 class Author
-    attr_accessor :name, :posts, :title
-
+    attr_accessor :name
+    
     def initialize(name)
         @name = name
     end
@@ -9,17 +9,16 @@ class Author
         Post.all.select {|post| post.author == self}
     end
 
-    def add_post(post)
-        post.author = self
+    def add_post(post_object)
+       post_object.author = self
     end
 
-    def add_post_by_title(title)
-        new_post = Post.new(title)
-        add_post(new_post)
-    end
+    def add_post_by_title(post_title)
+        new_post = Post.new(post_title)
+        new_post.author = self
+     end
 
-    def self.post_count
-        Post.all.length
-    end
-
+     def self.post_count
+        Post.all.uniq.length
+     end
 end

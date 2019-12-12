@@ -1,13 +1,14 @@
 require "pry"
-
 class Post
-    attr_accessor :author, :title
-    
+
+    attr_accessor :author, :title, :name
+
     @@all = []
 
-    def initialize(title)
+    def initialize (title)
         @title = title
-        #@author
+        @author 
+        @name
         save
     end
 
@@ -22,8 +23,7 @@ class Post
     def author_name
         if self.author
             self.author.name
-        else 
-            nil
+        else nil
         end
     end
 end
